@@ -1,0 +1,1 @@
+#docker run -it --rm -v myvolume:/app/  --name="my-volume" a81a62fc48cd       # Create a container with a volume

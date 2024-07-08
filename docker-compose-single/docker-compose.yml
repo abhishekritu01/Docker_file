@@ -1,0 +1,20 @@
+services:
+  mysqldb:
+    image: mysql:latest
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=userinfo
+
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
+      timeout: 20s
+      retries: 10
+
+    container_name: mysqldb
+
+  mypythonapp:
+    build: .
+    container_name: mypythonapp
+    depends_on:
+      mysqldb:
+        condition: service_healthy

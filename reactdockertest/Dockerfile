@@ -1,6 +1,7 @@
 FROM node:20
 
-WORKDIR /myapp
+# Create app directory in the container 
+WORKDIR /myapp           
 
 COPY . .
 
